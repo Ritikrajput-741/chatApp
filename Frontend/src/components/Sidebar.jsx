@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { useSocketContext } from "@/context/SocketContext";
 
 const Sidebar = () => {
-    const url = `https://chatapp-2eab.onrender.com`;
+    const url ="https://chatapp-2eab.onrender.com";
   
   const { authData, setAuthData } = useAuth();
   const { userOnline, socket } = useSocketContext();

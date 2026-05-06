@@ -9,7 +9,7 @@ export const useSocketContext = () => {
 };
 
 export const SocketContextProvider = ({ children }) => {
-  const url = `https://chatapp-2eab.onrender.com`;
+  const url = "https://chatapp-2eab.onrender.com";
 
   const [socket, setSocket] = useState(null);
   const [userOnline, setUserOnline] = useState([]);
