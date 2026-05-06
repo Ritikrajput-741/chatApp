@@ -18,7 +18,7 @@ import { Loader2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 const SignUp = () => {
-    const url = `https://chatapp-2eab.onrender.com`;
+    const url = "https://chatapp-2eab.onrender.com";
 
   const { setAuthData, authData } = useAuth();
   const navigate = useNavigate();
