@@ -38,7 +38,13 @@ const SignUp = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const res = await axios.post(`${url}/api/v1/auth/register`, inputData);
+      const res = await axios.post(
+        `${url}/api/v1/auth/register`,
+        {
+          withCredentials: true,
+        },
+        inputData,
+      );
       if (res.data.success) {
         toast.success(res.data.message);
         setAuthData(res.data);
