@@ -18,7 +18,7 @@ import { Loader2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 const SignUp = () => {
-    const url = "https://chatapp-2eab.onrender.com";
+  const url = "https://chatapp-2eab.onrender";
 
   const { setAuthData, authData } = useAuth();
   const navigate = useNavigate();
@@ -38,10 +38,7 @@ const SignUp = () => {
     setLoading(true);
     e.preventDefault();
     try {
-      const res = await axios.post(
-        `${url}/api/v1/auth/register`,
-        inputData,
-      );
+      const res = await axios.post(`${url}/api/v1/auth/register`, inputData);
       if (res.data.success) {
         toast.success(res.data.message);
         setAuthData(res.data);
