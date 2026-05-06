@@ -11,6 +11,8 @@ import { toast } from "sonner";
 import { useSocketContext } from "@/context/SocketContext";
 
 const Sidebar = () => {
+    const url = `https://chatapp-2eab.onrender.com`;
+  
   const { authData, setAuthData } = useAuth();
   const { userOnline, socket } = useSocketContext();
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ const Sidebar = () => {
   const fetchUnreadCount = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3001/api/v1/message/unread/count",
+        `${url}/api/v1/message/unread/count`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -57,7 +59,7 @@ const Sidebar = () => {
     setLoading(true);
     try {
       const res = await axios.get(
-        `http://localhost:3001/api/v1/user/search?search=${searchData}`,
+        `${url}/api/v1/user/search?search=${searchData}`,
         { withCredentials: true },
       );
       if (res.data.success) {
@@ -75,7 +77,7 @@ const Sidebar = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          "http://localhost:3001/api/v1/user/currentchatter",
+          `${url}/api/v1/user/currentchatter`,
           { withCredentials: true },
         );
         if (res.data.success) {
@@ -100,7 +102,7 @@ const Sidebar = () => {
   const handleLogout = async () => {
     try {
       const logout = await axios.post(
-        "http://localhost:3001/api/v1/auth/logout",
+        `${url}/api/v1/auth/logout`,
       );
       if (logout.data.success) {
         localStorage.removeItem("chatapp");

@@ -18,6 +18,8 @@ import { Loader2 } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 
 const Login = () => {
+    const url = `https://chatapp-2eab.onrender.com`;
+
   const { setAuthData } = useAuth();
   const navigate = useNavigate();
   const [inputData, setInputData] = useState({});
@@ -37,7 +39,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/v1/auth/login",
+        `${url}/api/v1/auth/login`,
         inputData,
         {
           withCredentials: true,

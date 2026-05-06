@@ -34,14 +34,13 @@ const MessageBox = () => {
 
       const unseenMessages = messages.filter(
         (msg) =>
-          msg.reciverId?.toString() === authData?.id?.toString() &&
-          !msg.seen,
+          msg.reciverId?.toString() === authData?.id?.toString() && !msg.seen,
       );
 
       for (const msg of unseenMessages) {
         try {
           await axios.put(
-            `http://localhost:3001/api/v1/message/seen/${msg._id}`,
+            `/api/v1/message/seen/${msg._id}`,
             {},
             { withCredentials: true },
           );
@@ -110,7 +109,7 @@ const MessageBox = () => {
       setLoading(true);
       try {
         const res = await axios.get(
-          `http://localhost:3001/api/v1/message/${selectedConversation?._id}`,
+          `/api/v1/message/${selectedConversation?._id}`,
           { withCredentials: true },
         );
         setMessages(Array.isArray(res.data.message) ? res.data.message : []);
@@ -143,7 +142,7 @@ const MessageBox = () => {
 
     try {
       const res = await axios.post(
-        `http://localhost:3001/api/v1/message/send/${selectedConversation?._id}`,
+        `/api/v1/message/send/${selectedConversation?._id}`,
         { messages: input },
         { withCredentials: true },
       );
@@ -296,9 +295,7 @@ const MessageBox = () => {
                     {formatTime(msg.createdAt)}
                     {isMine && (
                       <span
-                        className={
-                          msg.seen ? "text-blue-500" : "text-gray-400"
-                        }
+                        className={msg.seen ? "text-blue-500" : "text-gray-400"}
                       >
                         {msg.seen ? "✓✓" : "✓"}
                       </span>

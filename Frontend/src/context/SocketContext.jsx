@@ -9,13 +9,15 @@ export const useSocketContext = () => {
 };
 
 export const SocketContextProvider = ({ children }) => {
+  const url = `https://chatapp-2eab.onrender.com`;
+
   const [socket, setSocket] = useState(null);
   const [userOnline, setUserOnline] = useState([]);
   const { authData } = useAuth();
 
   useEffect(() => {
     if (authData) {
-      const newSocket = io("http://localhost:3001", {
+      const newSocket = io(`${url}`, {
         query: {
           userId: authData?.id,
         },
